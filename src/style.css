@@ -1,0 +1,51 @@
+@import '~normalize.css';
+@import './style/animation.css';
+
+.alert-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  max-width: 600px;
+  border: 1px solid #f78b8b;
+  margin-bottom: 20px;
+  animation: show-element 0.5s;
+  background: #fff5f5;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.alert-error::before {
+  position: relative;
+  z-index: 999;
+  width: 80px;
+  background-color: #f78b8b;
+  background-image: url('./assets/images/error.svg');
+  background-position: center 16px;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  content: '';
+}
+
+.alert-error__content {
+  padding: 20px;
+}
+
+.alert-error__title {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  color: #f78b8b;
+  font-size: 18px;
+}
+
+.alert-error__body p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.alert-error__status {
+  color: #f78b8b;
+  font-size: 18px;
+  font-weight: bold;
+}

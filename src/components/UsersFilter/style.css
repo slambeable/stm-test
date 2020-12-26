@@ -1,0 +1,46 @@
+.users-filter {
+  margin: 20px 0;
+}
+
+.users-filter .users-filter__button {
+  padding: 12px 30px;
+  border: none;
+  background-color: rgb(45, 73, 94);
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  transition-duration: 0.4s;
+}
+
+.users-filter .users-filter__button:hover {
+  background-color: rgb(24, 39, 49);
+  cursor: pointer;
+}
+
+.users-filter .users-filter__input {
+  width: 30%;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  transition: width 0.4s ease-in-out;
+}
+
+.users-filter .users-filter__input:focus {
+  width: 80%;
+}
+
+.users-filter__empty {
+  margin-top: 5px;
+  margin-left: 20px;
+  color: #f78b8b;
+  font-size: 0;
+  opacity: 0;
+  transition: opacity 0.4s;
+  visibility: hidden;
+}
+
+.users-filter__empty.users-filter__empty_visible {
+  font-size: 18px;
+  opacity: 1;
+  visibility: visible;
+}

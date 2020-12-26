@@ -1,0 +1,57 @@
+.users-data__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.users-data__table.users-data__table_hide {
+  display: none;
+}
+
+.users-data__table td,
+.users-data__table th {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.users-data__table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.users-data__table tr:hover {
+  background-color: #ddd;
+}
+
+.users-data__table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: rgb(91, 135, 165);
+  color: white;
+  text-align: left;
+}
+
+.users-data__row.users-data__row_hide {
+  display: none;
+}
+
+.tooltip {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.tooltip img:first-child {
+  outline: 1px solid rgb(24, 39, 49);
+}
+
+.tooltip .tooltip-image {
+  position: absolute;
+  z-index: 1;
+  margin-left: 200px;
+  outline: 1px solid rgb(24, 39, 49);
+  visibility: hidden;
+}
+
+.tooltip:hover .tooltip-image {
+  visibility: visible;
+}
