@@ -8,5 +8,6 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'prefer-rest-params': 'off',
     'func-names': 'off',
+    'import/no-unresolved': 'off',
   },
 };

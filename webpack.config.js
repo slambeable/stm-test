@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 const StylelintWebpackPlugin = require('stylelint-webpack-plugin');
 const webpack = require('webpack');
 
@@ -28,27 +29,8 @@ const optimization = () => {
   return config;
 };
 
-module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  mode: 'development',
-  entry: './index.js',
-  output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  optimization: optimization(),
-  resolve: {
-    extensions: ['.js', 'css', 'pug'],
-    alias: {
-      '@': path.resolve(__dirname),
-    },
-  },
-  devServer: {
-    port: 4200,
-    hot: isDev,
-  },
-  devtool: isDev ? 'source-map' : '',
-  plugins: [
+const plugins = () => {
+  const config = [
     new HTMLWebpackPlugin({
       template: './index.html',
       collapseWhitespace: isProd,
@@ -62,29 +44,54 @@ module.exports = {
         },
       ],
     }),
-    new MiniCssExtractPlugin({ // пихаем в dev
+    new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
     }),
     new StylelintWebpackPlugin({
       configFile: './stylelint.config.js',
     }),
-    new webpack.HotModuleReplacementPlugin(), //             надо в dev засунуть
-  ],
+  ];
+
+  if (isDev) {
+    config.push(
+      new webpack.HotModuleReplacementPlugin(),
+      new ESLintWebpackPlugin(),
+    );
+  }
+
+  return config;
+};
+
+module.exports = {
+  context: path.resolve(__dirname, 'src'),
+  mode: 'development',
+  entry: './index.js',
+  output: {
+    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: isProd ? '/stm-test/' : '/',
+  },
+  optimization: optimization(),
+  resolve: {
+    extensions: ['.js', 'css', 'pug'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+  devServer: {
+    port: 4200,
+    hot: isDev,
+  },
+  devtool: 'source-map',
+  plugins: plugins(),
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
+          MiniCssExtractPlugin.loader,
           'css-loader',
         ],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: isDev ? 'eslint-loader' : '',
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -94,7 +101,6 @@ module.exports = {
         test: /\.svg/,
         use: {
           loader: 'svg-url-loader',
-          options: {},
         },
       },
     ],

@@ -1,5 +1,5 @@
-import { formateDate } from '../../mixins/utils';
-import data from '../../mixins/data';
+import { formateDate } from '@/mixins/utils';
+import data from '@/mixins/data';
 
 export default (usersData) => {
   const headers = data.headersName.map((header) => `<th>${header}</th>`);

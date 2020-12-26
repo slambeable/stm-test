@@ -1,4 +1,4 @@
-import { createArray } from '../../mixins/utils';
+import { createArray } from '@/mixins/utils';
 
 export default () => {
   const amountOfElements = createArray(12);

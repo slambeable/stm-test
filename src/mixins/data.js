@@ -7,7 +7,7 @@ export default {
     'Phone',
     'Registration date',
   ],
-  errorContent(res) {
+  errorContent(error) {
     return `<div class="alert-error">
       <div class="alert-error__content">
         <h2 class="alert-error__title">
@@ -15,7 +15,7 @@ export default {
         </h2>
         <div class="alert-error__body">
           <p>An error occurred: 
-            <span class="alert-error__status">${res.status}</span>. Please try again later.</p>
+            <span class="alert-error__status">${error}</span>. Please try again later.</p>
         </div>
       </div>
     </div>`;
