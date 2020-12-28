@@ -1,6 +1,9 @@
 import { formateDate } from '@/mixins/utils';
 import data from '@/mixins/data';
 
+// export { Function } template for Users Data
+// return { DOMstring } template
+
 export default (usersData) => {
   const headers = data.headersName.map((header) => `<th>${header}</th>`);
   const tableHeader = `<thead><tr>${headers.join(' ')}</tr></thead>`;

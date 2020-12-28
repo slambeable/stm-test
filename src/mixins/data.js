@@ -1,4 +1,9 @@
+// export { Object } data
+
 export default {
+
+  // property { Array } headers name
+
   headersName: [
     'Name',
     'Picture',
@@ -7,6 +12,11 @@ export default {
     'Phone',
     'Registration date',
   ],
+
+  // property { Method } renders an error in the DOM
+  // parameter { string|Error } error description
+  // return { DOMString } DOMstring with error description
+
   errorContent(error) {
     return `<div class="alert-error">
       <div class="alert-error__content">

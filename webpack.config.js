@@ -21,7 +21,13 @@ const optimization = () => {
 
   if (isProd) {
     config.minimizer = [
-      new TerserWebpackPlugin(),
+      new TerserWebpackPlugin({
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+      }),
       new CssMinimizerWebpackPlugin(),
     ];
   }
@@ -34,6 +40,7 @@ const plugins = () => {
     new HTMLWebpackPlugin({
       template: './index.html',
       collapseWhitespace: isProd,
+      removeComments: isProd,
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({

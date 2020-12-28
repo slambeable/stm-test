@@ -1,5 +1,8 @@
 import { createArray } from '@/mixins/utils';
 
+// export { Function } template for Page Loader
+// return { DOMstring } template
+
 export default () => {
   const amountOfElements = createArray(12);
 

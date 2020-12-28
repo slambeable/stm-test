@@ -2,11 +2,20 @@ import template from './template';
 import './style.css';
 import { decoratorDelay } from '../../mixins/utils';
 
+// components for interface for filtering user data
+// export { UsersFilter } class
+
 export default class UsersFilter {
+  // constructor
+  // parameter { DOMElement } application root element
+
   constructor(app) {
     this.app = app;
     this.element = '';
   }
+
+  // method for rendering element in DOM
+  // return { DOMElement } element
 
   render() {
     this.app.insertAdjacentHTML('afterbegin', template(this.userData));
@@ -15,9 +24,14 @@ export default class UsersFilter {
     return this.element;
   }
 
+  // method for remove element from DOM
+
   remove() {
     this.app.removeChild(this.element);
   }
+
+  // method adds handlers to the filtering component
+  // parameter { DOMElement } table with users data
 
   addFilterHandler(table) {
     const input = this.element.querySelector('.users-filter__input');

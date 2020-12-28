@@ -4,6 +4,8 @@ import UsersData from './components/UsersData/index';
 import UsersFilter from './components/UsersFilter/index';
 import getUsersData from './mixins/api';
 
+// launches the application on full DOM load and parsing
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     const app = document.querySelector('#app');
